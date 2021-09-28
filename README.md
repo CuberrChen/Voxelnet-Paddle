@@ -249,3 +249,5 @@ kitti/
 &emsp;&emsp;&emsp;&emsp;<font size=4>[traveller59/second.pytorch](https://github.com/traveller59/second.pytorch)</font><br><br>
 &emsp;&emsp;&emsp;&emsp;<font size=4>[叶月火狐/PointPillars](https://aistudio.baidu.com/aistudio/projectdetail/2250701?channelType=0&channel=0)</font><br><br>
 
+
+[AIStudio链接](https://aistudio.baidu.com/aistudio/projectdetail/2312826?contributionType=1)
