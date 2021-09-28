@@ -1,0 +1,80 @@
+first example:
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 17:01:34  Samples:  316
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 0.656     CPU time: 0.511
+/   _/                      v4.0.3
+
+Program: eval.py eval --cfg_file=configs/voxelnet_kitti_car.yaml --model_dir=./params/model
+
+0.655 eval  eval.py:20
+├─ 0.646 _predict_kitti_to_file  eval.py:211
+│  └─ 0.644 __call__  paddle/fluid/dygraph/layers.py:875
+│        [6 frames hidden]  paddle, <decorator-gen-40>, contextlib
+│           0.642 forward  models/detectors/voxelnet.py:572
+│           ├─ 0.557 predict  <decorator-gen-269>:1
+│           │     [2 frames hidden]  <decorator-gen-269>, paddle
+│           │        0.557 _decorate_function  paddle/fluid/dygraph/base.py:328
+│           │        └─ 0.557 predict  models/detectors/voxelnet.py:670
+│           │           ├─ 0.432 nms  libs/ops/box_paddle_ops.py:404
+│           │           │  └─ 0.431 nms_gpu  libs/ops/non_max_suppression/nms_gpu.py:130
+│           │           │     └─ 0.425 _compile_for_args  numba/dispatcher.py:326
+│           │           │           [1334 frames hidden]  numba, llvmlite, contextlib, colorama...
+│           │           ├─ 0.080 __getitem__  paddle/fluid/dygraph/varbase_patch_methods.py:546
+│           │           │     [4 frames hidden]  paddle
+│           │           └─ 0.026 box_lidar_to_camera  libs/ops/box_paddle_ops.py:346
+│           │              └─ 0.025 concat  paddle/tensor/manipulation.py:76
+│           │                    [4 frames hidden]  paddle, <built-in>
+│           └─ 0.084 __call__  paddle/fluid/dygraph/layers.py:875
+│              ├─ 0.058 forward  models/detectors/voxelnet.py:79
+│              │  ├─ 0.045 __call__  paddle/fluid/dygraph/layers.py:875
+│              │  │  └─ 0.045 forward  models/detectors/voxelnet.py:36
+│              │  │     └─ 0.035 tile  paddle/tensor/manipulation.py:1180
+│              │  │           [4 frames hidden]  paddle, <built-in>
+│              │  └─ 0.008 __impl__  paddle/fluid/dygraph/math_op_patch.py:179
+│              │        [16 frames hidden]  paddle, warnings, linecache, <built-in>
+│              ├─ 0.019 forward  models/detectors/voxelnet.py:425
+│              │  └─ 0.017 __call__  paddle/fluid/dygraph/layers.py:875
+│              │        [35 frames hidden]  paddle, <built-in>, <decorator-gen-39...
+│              └─ 0.007 forward  models/detectors/voxelnet.py:276
+└─ 0.009 example_convert_to_paddle  eval.py:170
+   └─ 0.009 to_tensor  <decorator-gen-127>:1
+
+
+later example:
+
+0.131 eval  eval.py:20
+└─ 0.130 _predict_kitti_to_file  eval.py:211
+   └─ 0.128 __call__  paddle/fluid/dygraph/layers.py:875
+      └─ 0.128 forward  models/detectors/voxelnet.py:572
+         ├─ 0.111 predict  <decorator-gen-269>:1
+         │     [2 frames hidden]  <decorator-gen-269>, paddle
+         │        0.111 _decorate_function  paddle/fluid/dygraph/base.py:328
+         │        └─ 0.111 predict  models/detectors/voxelnet.py:670
+         │           ├─ 0.089 __getitem__  paddle/fluid/dygraph/varbase_patch_methods.py:546
+         │           │     [11 frames hidden]  paddle, <built-in>
+         │           │        0.086 [self]  
+         │           ├─ 0.008 mask_slice_v1  models/detectors/voxelnet.py:1080
+         │           │  ├─ 0.006 masked_select  paddle/tensor/search.py:632
+         │           │  │     [3 frames hidden]  paddle, <built-in>
+         │           │  └─ 0.002 reshape  paddle/tensor/manipulation.py:1506
+         │           │        [6 frames hidden]  paddle, <built-in>, <decorator-gen-26>
+         │           ├─ 0.003 nms  libs/ops/box_paddle_ops.py:404
+         │           │  └─ 0.002 nms_gpu  libs/ops/non_max_suppression/nms_gpu.py:130
+         │           ├─ 0.002 box_lidar_to_camera  libs/ops/box_paddle_ops.py:346
+         │           ├─ 0.002 decode_paddle  core/box_coders.py:80
+         │           │  └─ 0.002 second_box_decode  libs/ops/box_paddle_ops.py:48
+         │           ├─ 0.002 corner_to_standup_nd  libs/ops/box_paddle_ops.py:202
+         │           │  └─ 0.002 __getitem__  paddle/fluid/dygraph/varbase_patch_methods.py:546
+         │           │        [2 frames hidden]  paddle
+         │           ├─ 0.002 center_to_corner_box2d  libs/ops/box_paddle_ops.py:286
+         │           │  └─ 0.002 corners_nd  libs/ops/box_paddle_ops.py:151
+         │           └─ 0.002 center_to_corner_box3d  libs/ops/box_paddle_ops.py:260
+         │              └─ 0.002 rotation_3d_in_axis  libs/ops/box_paddle_ops.py:211
+         └─ 0.018 __call__  paddle/fluid/dygraph/layers.py:875
+               [7 frames hidden]  paddle, <decorator-gen-40>, contextli...
+                  0.010 forward  models/detectors/voxelnet.py:425
+                  └─ 0.010 __call__  paddle/fluid/dygraph/layers.py:875
+                        [19 frames hidden]  paddle, <built-in>, contextlib
+                  0.004 forward  models/detectors/voxelnet.py:79
+                  └─ 0.002 __call__  paddle/fluid/dygraph/layers.py:875
+                     └─ 0.002 forward  models/detectors/voxelnet.py:36
+                  0.002 forward  models/detectors/voxelnet.py:276
