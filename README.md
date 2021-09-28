@@ -235,7 +235,7 @@ kitti/
 
 ## **5、评估**
 
-可下载之前训练的模型进行评估测试，注意修改model_dir路径噢～
+可下载之前训练的模型（以及更多之前的训练日志）进行评估测试，注意修改model_dir路径噢～
 - [网盘链接](https://pan.baidu.com/s/1mV9GFoFlk5upgxW517ACmA): 提取码: 75pe
 
 ```python
